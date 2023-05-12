@@ -19,12 +19,25 @@ void Dialog::on_pushButton_released()
     /*
      * getOpenFileName(parent, caption, dir)
      */
-    QString file_name = QFileDialog::getOpenFileName(this, "open a file", "C://");
-    if (file_name == ""){
+    QString fileName = QFileDialog::getOpenFileName(this, "open a file", "C://");
+    if (fileName == ""){
         return;
     }
-    //QMessageBox::information(this, "success", file_name);
-    QPixmap img(file_name);
-    ui->label->setPixmap(img);
+    //QMessageBox::information(this, "success", fileName);
+    setGraphcsView(fileName);
 }
 
+void Dialog::setGraphcsView(QString filePath){
+    // イメージファイルを読み込む
+    QImage image(filePath);
+
+    // QImageをQPixmapに変更
+    QPixmap pixmap = QPixmap::fromImage(image);
+    // QPixmapをQGraphicsPixmapItemに変換する
+    QGraphicsPixmapItem *imageItem = new QGraphicsPixmapItem(pixmap);
+    // QGraphicsPixmapItemをsceneに追加する
+    scene.addItem(imageItem);
+
+     // sceneをQGraphicsViewに設定する。
+    ui->graphicsView->setScene(&scene);
+}

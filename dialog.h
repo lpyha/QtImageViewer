@@ -2,7 +2,10 @@
 #define DIALOG_H
 
 #include <QDialog>
+#include <QImage>
 #include <QPixmap>
+#include <QGraphicsView>
+#include <QGraphicsPixmapItem>
 #include <QFileDialog>
 #include <QMessageBox>
 
@@ -23,5 +26,7 @@ private slots:
 
 private:
     Ui::Dialog *ui;
+    QGraphicsScene scene;
+    void setGraphcsView(QString filePath);
 };
 #endif // DIALOG_H

@@ -10,7 +10,7 @@ Dialog::Dialog(QWidget *parent)
 
 Dialog::~Dialog()
 {
-    delete ui;
+    delete ui;  
 }
 
 
@@ -23,9 +23,11 @@ void Dialog::on_pushButton_released()
     if (fileName == ""){
         return;
     }
+    // debug用
     //QMessageBox::information(this, "success", fileName);
     setGraphcsView(fileName);
 }
+
 
 void Dialog::setGraphcsView(QString filePath){
     // イメージファイルを読み込む
@@ -36,8 +38,31 @@ void Dialog::setGraphcsView(QString filePath){
     // QPixmapをQGraphicsPixmapItemに変換する
     QGraphicsPixmapItem *imageItem = new QGraphicsPixmapItem(pixmap);
     // QGraphicsPixmapItemをsceneに追加する
-    scene.addItem(imageItem);
+
+    // sceneのインスタンス化, sceneはQGraphicsSceneを継承している
+    scene = new MouseScene;
+    scene->addItem(imageItem);
 
      // sceneをQGraphicsViewに設定する。
-    ui->graphicsView->setScene(&scene);
+    ui->graphicsView->setScene(scene);
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

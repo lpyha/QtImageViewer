@@ -8,6 +8,10 @@
 #include <QGraphicsPixmapItem>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QPushButton>
+
+#include <mousescene.h>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Dialog; }
@@ -26,7 +30,11 @@ private slots:
 
 private:
     Ui::Dialog *ui;
-    QGraphicsScene scene;
+    //QGraphicsScene scene;
     void setGraphcsView(QString filePath);
+
+    // MouseSceneはQGraphicsSceneを継承している
+    MouseScene *scene;
+
 };
 #endif // DIALOG_H

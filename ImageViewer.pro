@@ -10,10 +10,12 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    dialog.cpp
+    dialog.cpp \
+    mousescene.cpp
 
 HEADERS += \
-    dialog.h
+    dialog.h \
+    mousescene.h
 
 FORMS += \
     dialog.ui

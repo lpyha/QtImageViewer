@@ -9,6 +9,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QPushButton>
+#include <QBrush>
 
 #include <mousescene.h>
 
@@ -35,6 +36,5 @@ private:
 
     // MouseSceneはQGraphicsSceneを継承している
     MouseScene *scene;
-
 };
 #endif // DIALOG_H

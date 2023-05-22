@@ -43,6 +43,8 @@ void Dialog::setGraphcsView(QString filePath){
     scene = new MouseScene;
     scene->addItem(imageItem);
 
+    // sceneの背景、QGraphicsViewをgrayにする
+    ui->graphicsView->setBackgroundBrush(QBrush(Qt::gray));
      // sceneをQGraphicsViewに設定する。
     ui->graphicsView->setScene(scene);
 

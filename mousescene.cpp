@@ -2,8 +2,7 @@
 
 MouseScene::MouseScene(QObject *parent)
     : QGraphicsScene{parent}
-{
-
+{  
 }
 
 void MouseScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -28,11 +27,30 @@ void MouseScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     }else if (m_button == Qt::LeftButton){
         cout << "LeftButtonReleased" << endl;
         m_releasePoint = new QPoint(event->scenePos().x(), event->scenePos().y());
+        QPen pen(Qt::red);
+        pen.setWidth(5);
+
+        QPen penRect(Qt::blue);
+        penRect.setWidth(5);
+
+        /*
+         *　(始点x, 始点y, 終点x, 終点y)であることに注意しろ
+         */
+        this->addLine(m_pressPoint->x(), m_pressPoint->y(),
+                      m_releasePoint->x(), m_releasePoint->y(), pen);
+
         this->addRect(m_pressPoint->x(), m_pressPoint->y(),
-                      m_releasePoint->x(), m_pressPoint->y());
+                      abs(m_pressPoint->x() - m_releasePoint->x()),
+                      abs(m_pressPoint->y() - m_releasePoint->y()),
+                      penRect);
+
     }else{
         cout << "UnknownButtonReleased" << endl;
     }
+
+    cout << m_pressPoint->x() << ", " << m_pressPoint->y() << endl;
+    cout << m_releasePoint->x() << ", " << m_releasePoint->y() << endl;
+
 }
 
 void MouseScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
